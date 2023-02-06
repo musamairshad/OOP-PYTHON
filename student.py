@@ -10,25 +10,35 @@ class Student:
     def __str__(self):
         return f"{self.name} from {self.house}"
     
-    @property
-    def name(self):
-        return self._name
+# There are other methods in python which are called static methods.
     
-    @name.setter
-    def name(self, name):
-        if not name:
-            raise ValueError("Missing name.")
-        self._name = name
+    @classmethod
+    def get(cls):
+        name = input("Name: ")
+        house = input("House: ")
+        return cls(name, house)
     
-    @property
-    def house(self):
-        return self._house
     
-    @house.setter
-    def house(self, house):
-        if house not in ["Karachi", "Lahore", "Punjab"]:
-            raise ValueError("Invalid house!")
-        self._house = house
+    
+    # @property
+    # def name(self):
+    #     return self._name
+    
+    # @name.setter
+    # def name(self, name):
+    #     if not name:
+    #         raise ValueError("Missing name.")
+    #     self._name = name
+    
+    # @property
+    # def house(self):
+    #     return self._house
+    
+    # @house.setter
+    # def house(self, house):
+    #     if house not in ["Karachi", "Lahore", "Punjab"]:
+    #         raise ValueError("Invalid house!")
+    #     self._house = house
 
     # def charm(self):
     #     match self.patronus:
@@ -48,17 +58,18 @@ class Student:
 # decorators => functions which are modify the behaviour of other functions.
 
 def main():
-    student = get_student()
-    student._house = "Bantva"
+    # student = get_student()
+    student = Student.get()
+    # student._house = "Bantva"
     print(student)
     # print(student.charm())
     # print(f"{student.name} from {student.house}")
 
 
-def get_student():
-    name = input("Enter Name: ")
-    house = input("Enter House: ")
-    return Student(name, house)  # Constructor call.
+# def get_student():
+#     name = input("Enter Name: ")
+#     house = input("Enter House: ")
+#     return Student(name, house)  # Constructor call.
 
 
 if (__name__ == "__main__"):
